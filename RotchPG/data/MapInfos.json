@@ -1,6 +1,6 @@
 [
 null,
-{"id":1,"expanded":true,"name":"WorldMap","order":1,"parentId":0,"scrollX":4866,"scrollY":3414},
+{"id":1,"expanded":true,"name":"WorldMap","order":1,"parentId":0,"scrollX":5561.142857142857,"scrollY":4038.8571428571427},
 {"id":2,"expanded":true,"name":"RotchVillage","order":2,"parentId":1,"scrollX":4914,"scrollY":2766},
 {"id":3,"expanded":false,"name":"RotchHouse_RotchetteRoom","order":3,"parentId":2,"scrollX":4914,"scrollY":2766},
 {"id":4,"expanded":false,"name":"RotchHouse_CorridorEtage","order":5,"parentId":2,"scrollX":4914,"scrollY":2766},
