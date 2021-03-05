@@ -6247,7 +6247,9 @@ function Game_CharacterBase() {
 
 Object.defineProperties(Game_CharacterBase.prototype, {
     x: { get: function() { return this._x; }, configurable: true },
-    y: { get: function() { return this._y; }, configurable: true }
+    y: { get: function() { return this._y; }, configurable: true },
+    realX: { get: function() { return this._realX; }, configurable: true },
+    realY: { get: function() { return this._realY; }, configurable: true }
 });
 
 Game_CharacterBase.prototype.initialize = function() {
