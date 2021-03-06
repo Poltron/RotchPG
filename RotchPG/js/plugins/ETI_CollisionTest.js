@@ -30,12 +30,12 @@
     var number = params["Number Param"];
     var file = params["File Param"];
 
-
     _alias_eti_collisiontest = Game_Interpreter.prototype.pluginCommand;
     Game_Interpreter.prototype.pluginCommand = function(command, args) {
         _alias_eti_collisiontest.call(this, command, args);
 
         if (command === "yolotest") this.yolotest(args[0], args[1], args[2]);
+        if (command === "Collision_PlayerEvent") this.Collision_PlayerEvent(Number(args[0]), Number(args[1]));
     }
 
     Game_Interpreter.prototype.yolotest = function (arg0, arg1, arg2) {
@@ -43,4 +43,25 @@
         $gameMessage.setBackground(1);
         $gameMessage.setPositionType(1);
         $gameMessage.add("Yolotest args : " + arg0 + "/" + arg1 + "/" + arg2);
+    }
+
+    Game_Interpreter.prototype.Collision_PlayerEvent = function (eventId, distance) {
+        ev = $gameMap.event(eventId);
+        
+        if (ev != null)
+        {
+            pX = $gamePlayer.realX; pY = $gamePlayer.realY;
+            eX = ev.realX; eY = ev.realY;
+
+            delta = Math.abs(pX - eX) + Math.abs(pY - eY);
+            if (delta <= distance)
+            {
+                var key = [$gameMap.mapId(), this.eventId(), 'A'];
+                $gameSelfSwitches.setValue(key, true);
+            }
+        }
+        else
+        {
+            $gameMessage.add("ERROR Collision_PlayerEvent : Event " + eventId + " could not be found.");
+        }
     }

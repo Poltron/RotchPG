@@ -1,12 +1,12 @@
 [
 null,
-{"id":1,"expanded":true,"name":"WorldMap","order":1,"parentId":0,"scrollX":5636.4,"scrollY":3075.6},
-{"id":2,"expanded":true,"name":"RotchVillage","order":2,"parentId":1,"scrollX":973.0909090909091,"scrollY":1159.2727272727273},
+{"id":1,"expanded":true,"name":"WorldMap","order":1,"parentId":0,"scrollX":5430,"scrollY":2858},
+{"id":2,"expanded":true,"name":"RotchVillage","order":2,"parentId":1,"scrollX":1622,"scrollY":1478},
 {"id":3,"expanded":false,"name":"RotchHouse_RotchetteRoom","order":3,"parentId":2,"scrollX":2457,"scrollY":1383},
 {"id":4,"expanded":false,"name":"RotchHouse_CorridorEtage","order":5,"parentId":2,"scrollX":2457,"scrollY":1383},
 {"id":5,"expanded":false,"name":"RotchHouse_SalonCuisine","order":4,"parentId":2,"scrollX":2457,"scrollY":1383},
 {"id":6,"expanded":false,"name":"TransitionScreen","order":9,"parentId":0,"scrollX":982.8,"scrollY":553.1999999999999},
 {"id":7,"expanded":false,"name":"Shop","order":6,"parentId":2,"scrollX":819,"scrollY":461},
-{"id":8,"expanded":true,"name":"ValkyForest","order":7,"parentId":1,"scrollX":5756,"scrollY":463.2},
-{"id":9,"expanded":false,"name":"ValkyForest_Inside","order":8,"parentId":8,"scrollX":3029,"scrollY":453}
+{"id":8,"expanded":true,"name":"ValkyForest","order":7,"parentId":1,"scrollX":3452,"scrollY":1494},
+{"id":9,"expanded":false,"name":"ValkyForest_Inside","order":8,"parentId":8,"scrollX":816,"scrollY":990}
 ]
