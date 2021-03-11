@@ -8,11 +8,11 @@ Imported.YEP_LevelUpGrowthEffects = true;
 
 var Yanfly = Yanfly || {};
 Yanfly.LvGrEf = Yanfly.LvGrEf || {};
-Yanfly.LvGrEf.version = 1.01;
+Yanfly.LvGrEf.version = 1.00;
 
 //=============================================================================
  /*:
- * @plugindesc v1.01 Equip an item that upon leveling up will raise stats?
+ * @plugindesc v1.00 Equip an item that upon leveling up will raise stats?
  * This plugin will let you do just that!
  * @author Yanfly Engine Plugins
  *
@@ -124,10 +124,6 @@ Yanfly.LvGrEf.version = 1.01;
  * Changelog
  * ============================================================================
  *
- * Version 1.01:
- * - Bugfix made by Arisu's Dollhouse.
- * - Fixed the Level Up Switch On/Off notetags.
- *
  * Version 1.00:
  * - Finished Plugin!
  *
@@ -224,27 +220,27 @@ Game_Actor.prototype.performLevelUpGrowthFromObject = function(object) {
       this.learnSkill(skillId);
 
     // Switch On
-    } else if (line.match(/<Level Up Switch On:[ ]*(\d+(?:\s*,\s*\d+)*)>/i)) {
+    } else if (line.match(/<Level Up Switch On:[ ]*(\d+(?:\s*,\s*\d+)*>/i)) {
       var array = JSON.parse('[' + RegExp.$1.match(/\d+/g) + ']');
       for (var a = 0; a < array.length; ++a) {
-        $gameSwitches.setValue(Number(array[a]), true);
+        $gameSwitches.setValue(Number(a), true);
       }
     } else if (line.match(/<Level Up Switch On:[ ](\d+)[ ](?:THROUGH|to)[ ](\d+)>/i)) {
       var array = Yanfly.Util.getRange(Number(RegExp.$1), Number(RegExp.$2));
       for (var a = 0; a < array.length; ++a) {
-        $gameSwitches.setValue(Number(array[a]), true);
+        $gameSwitches.setValue(Number(a), true);
       }
 
     // Switch Off
-    } else if (line.match(/<Level Up Switch Off:[ ]*(\d+(?:\s*,\s*\d+)*)>/i)) {
+    } else if (line.match(/<Level Up Switch Off:[ ]*(\d+(?:\s*,\s*\d+)*>/i)) {
       var array = JSON.parse('[' + RegExp.$1.match(/\d+/g) + ']');
       for (var a = 0; a < array.length; ++a) {
-        $gameSwitches.setValue(Number(array[a]), false);
+        $gameSwitches.setValue(Number(a), false);
       }
     } else if (line.match(/<Level Up Switch Off:[ ](\d+)[ ](?:THROUGH|to)[ ](\d+)>/i)) {
       var array = Yanfly.Util.getRange(Number(RegExp.$1), Number(RegExp.$2));
       for (var a = 0; a < array.length; ++a) {
-        $gameSwitches.setValue(Number(array[a]), false);
+        $gameSwitches.setValue(Number(a), false);
       }
 
     // Recover All
