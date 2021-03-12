@@ -29,24 +29,28 @@
         {
             case 1:
                 ev.setMoveSpeed(6);
+                this.Collision_PlayerThisEvent(0.8);
                 break;
             case 2:
                 ev.setMoveSpeed(4);
+                this.Collision_PlayerThisEvent(0.8);
                 break;
             case 3:
                 ev.setMoveSpeed(3);
+                this.Collision_PlayerThisEvent(0.8);
                 break;
             case 4:
-                var key = [$gameMap.mapId(), this.eventId(), 'B'];
-                $gameSelfSwitches.setValue(key, true);
+                this._index = this._list.length;
                 Ritter.unspawnEvent(this.eventId(), true);
-                //Yanfly.DespawnEventID(this.eventId());
                 break;
         }
-
-        this.Collision_PlayerThisEvent(0.8);
     }
 
     Game_Interpreter.prototype.MartyMountain_Yolo = function () {
-        Ritter.spawnEvent(13, 1, 24, 75, false);
+        ev = $gameMap.event(this.eventId());
+        if (ev == null)
+        {
+            $gameMessage.add("ERROR MartyMountain_CheckBoulderSpeed : Event could not be found.");
+            return;
+        }
     }

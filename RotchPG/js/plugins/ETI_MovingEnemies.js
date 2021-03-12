@@ -1,14 +1,21 @@
     /*:
      * @author Etienne Champagne
-     * @plugindesc This plugin checks for collisions between moving events and Player by simple distance check.
-     *  
+     * @plugindesc Handles collisions between moving events and Player with distance check
      * 
      * @help
      * 
      * 
     */
 
-    var params = PluginManager.parameters("eti_collision");
+    var Imported = Imported || {};
+    Imported.ETI_MovingEnemies = true;
+   
+    var Eti = Eti || {};
+    Eti.MovingEnemies = Eti.MovingEnemies || {};
+    Eti.MovingEnemies.version = 1.0;
+    Eti.AlreadyDead = false;
+
+    Eti.Params = PluginManager.parameters("eti_collision");
 
     _alias_eti_collision = Game_Interpreter.prototype.pluginCommand;
     Game_Interpreter.prototype.pluginCommand = function(command, args) {
@@ -16,7 +23,13 @@
 
         if (command === "Collision_PlayerEvent") this.Collision_PlayerEvent(Number(args[0]), Number(args[1]));
         if (command === "Collision_PlayerThisEvent") this.Collision_PlayerEvent(Number(args[0]), Number(args[1]));
+        if (command === "Collision_PlayerIsAlive") this.Collision_PlayerIsAlive();
     }
+
+    Game_Interpreter.prototype.Collision_PlayerIsAlive = function () {
+        Eti.AlreadyDead = false;
+    }
+
 
     Game_Interpreter.prototype.Collision_PlayerEvent = function (eventId, distance) {
         ev = $gameMap.event(eventId);
@@ -31,6 +44,12 @@
             {
                 var key = [$gameMap.mapId(), this.eventId(), 'A'];
                 $gameSelfSwitches.setValue(key, true);
+
+                if (!Eti.AlreadyDead)
+                {
+                    $gameTemp.reserveCommonEvent(2);
+                    Eti.AlreadyDead = true;
+                }
             }
         }
         else
@@ -52,7 +71,12 @@
             {
                 var key = [$gameMap.mapId(), this.eventId(), 'A'];
                 $gameSelfSwitches.setValue(key, true);
-                $gameTemp.reserveCommonEvent(2);
+
+                if (!Eti.AlreadyDead)
+                {
+                    $gameTemp.reserveCommonEvent(2);
+                    Eti.AlreadyDead = true;
+                }
             }
         }
         else
