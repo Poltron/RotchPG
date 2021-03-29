@@ -287,6 +287,7 @@ Yanfly.Gab.Game_Interpreter_pluginCommand =
     Game_Interpreter.prototype.pluginCommand;
 Game_Interpreter.prototype.pluginCommand = function(command, args) {
     Yanfly.Gab.Game_Interpreter_pluginCommand.call(this, command, args)
+
     if (command === 'GabText') this.setGabText(args);
     if (command === 'GabSpriteName') this.setGabSpriteName(args);
     if (command === 'GabSpriteIndex') this.setGabSpriteIndex(args);
@@ -313,12 +314,13 @@ Game_Interpreter.prototype.clearGabInformation = function() {
     this._gabGraphicIndex = 0;
     this._gabSoundName = '';
     this._gabSwitch = 0;
+    this._gabTextColor = 0;
 };
 
 Game_Interpreter.prototype.setGabText = function(args) {
     var text = '';
     for (var i = 0; i < args.length; ++i) {
-      text = text + args[i] + ' ';
+      text = text + args[i];// + ' ';
     }
     this._gabText = text;
 };
@@ -416,7 +418,8 @@ Game_Interpreter.prototype.showGab = function() {
         this._gabGraphicName,
         this._gabGraphicIndex,
         this._gabSoundName,
-        this._gabSwitch
+        this._gabSwitch,
+        this._gabTextColor
     ];
     var scene = SceneManager._scene;
     if (scene._gabWindow) scene.startGabWindow(gabData);
@@ -431,7 +434,8 @@ Game_Interpreter.prototype.forceGab = function() {
         this._gabGraphicName,
         this._gabGraphicIndex,
         this._gabSoundName,
-        this._gabSwitch
+        this._gabSwitch,
+        this._gabTextColor
     ];
     var scene = SceneManager._scene;
     if (scene._gabWindow) scene.forceGabWindow(gabData);
@@ -616,6 +620,7 @@ Window_Gab.prototype.processNewGabData = function() {
     this._gabSwitchedOn = false;
     this._currentGab = gabData;
     this._text = gabData[0] || '';
+    console.log(this._text);
     this._graphicType = gabData[1] || 'none';
     this._graphicName = gabData[2] || '';
     this._graphicIndex = gabData[3] || 0;
