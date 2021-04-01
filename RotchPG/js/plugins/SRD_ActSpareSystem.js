@@ -452,7 +452,6 @@ Window_BattleSkill.prototype.drawItemName = function(item, x, y, width) {
 };
 
 SceneManager.update = function() {
-	console.log(Input.dir4)
     try {
         this.tickStart();
         if (Utils.isMobileSafari()) {

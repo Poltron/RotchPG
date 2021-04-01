@@ -1,0 +1,42 @@
+<Use Undertale Attack>
+
+<UTB Duration: 600>
+
+<UTB Code>
+
+if (f % 75 === 0 )
+{
+	this.createAttack(1);
+	this.createAttack(1);
+	this.createAttack(1);
+}
+
+</UTB Code>
+
+============================================================
+
+<UTB Attack 1>
+Initial X: this.window.left + 18 + Math.floor(Math.random() * 5) * 36
+Initial Y: this.window.top
+X Speed: 0
+Y Speed: 1
+X Accel: 0
+Y Accel: 0.03
+Collision Type: Rect
+X Scale: 1.4
+Y Scale: 0.5
+Color: pink
+Spawn Rate: -1
+Spawn Delay: 0
+<Initial Code>
+this._rebound = 0;
+</Initial Code>
+<Direct Code>
+if (this.y >= this.window.bottom && this._rebound === 0)
+{
+	this._rebound = 1;
+	this.yspeed = this.yspeed * -1;
+	this.yaccel = this.yaccel * -1;
+}
+</Direct Code>
+</UTB Attack 1>

@@ -625,7 +625,7 @@ Window_ActorCommand.prototype.numVisibleRows = function() {
 };
 
 Window_ActorCommand.prototype.maxCols = function() {
-	return 4;
+	return 2;//4;
 };
 
 Window_ActorCommand.prototype.windowWidth = function() {
@@ -664,9 +664,9 @@ Window_ActorCommand.prototype.drawItem = function(index) {
 Window_ActorCommand.prototype.makeCommandList = function() {
 	if (this._actor) {
 		this.addAttackCommand();
-		this.addCommand("ACT", 'act', this._actor.canAct());
+		//this.addCommand("ACT", 'act', this._actor.canAct());
 		this.addItemCommand();
-		this.addSkillCommands();
+		//this.addSkillCommands();
 	}
 };
 
