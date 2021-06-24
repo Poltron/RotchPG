@@ -427,6 +427,7 @@ DataManager.loadSpawnMap = function(mapId, eventId, x, y, save) {
 // End data stuff
 
 Ritter.spawnEvent = function(mapId, eventId, x, y, save) {
+        if (Eti.AlreadyDead) return;
 	if (!SceneManager._scene === 'Scene_Map') return;
 	if (!Ritter.canSpawnOn(x, y)) return;
 	if (!Ritter._SpawnMaps.contains(mapId)) {

@@ -125,6 +125,8 @@ _.min = parseFloat(params['Min Scale']);
 _.max = parseFloat(params['Max Scale']);
 _.speed = parseFloat(params['Scaling Speed']);
 
+var cursorLoadedSprite = null;
+
 _.cursor = function() {
 	var pad = this._padding;
 	var x = this._cursorRect.x + pad - this.origin.x;
@@ -138,7 +140,7 @@ _.cursor = function() {
 	var oy = y - y2;
 	var w2 = Math.min(w, this._width - pad - x2);
 	var h2 = Math.min(h, this._height - pad - y2);
-	var bitmap = _.loadImage("Heart-Cursor");
+	var bitmap = cursorLoadedSprite;//_.loadImage("Heart-Cursor");
 
 	if(_.animate) {
 		if(!this._windowCursorSprite._xAniOff) this._windowCursorSprite._xAniOff = 0;
@@ -179,7 +181,7 @@ _.loadImage = function(filename, hue) {
 };
 
 _.preloadImages = function() {
-	for(var i = 1; i <= 4; i++) {
+	for(var i = 1; i <= 2; i++) {
 		_.loadImage("Command " + i);
 	}
 };
@@ -272,6 +274,7 @@ var _Scene_Boot_loadSystemImages = Scene_Boot.loadSystemImages;
 Scene_Boot.loadSystemImages = function() {
 	_Scene_Boot_loadSystemImages.apply(this, arguments);
 	_.preloadImages();
+	cursorLoadedSprite = _.loadImage("Heart-Cursor");
 };
 
 //-----------------------------------------------------------------------------
@@ -425,7 +428,7 @@ Scene_Battle.prototype.updateWindowPositions = function() {
 
 Window_BattleStatus.prototype._refreshCursor = function() {};
 Window_BattleEnemy.prototype._refreshCursor = _.cursor;
-//Window_ActorCommand.prototype._refreshCursor = _.cursor;
+Window_ActorCommand.prototype._refreshCursor = _.cursor;
 Window_BattleSkill.prototype._refreshCursor = _.cursor;
 Window_BattleItem.prototype._refreshCursor = _.cursor;
 Window_PartyCommand.prototype._refreshCursor = _.cursor;
@@ -587,7 +590,7 @@ Window_ActorCommand.prototype._refreshCursor = function() {
 	var oy = y - y2;
 	var w2 = Math.min(w, this._width - pad - x2);
 	var h2 = Math.min(h, this._height - pad - y2);
-	var bitmap = _.loadImage("Heart-Cursor");
+	var bitmap = cursorLoadedSprite;//_.loadImage("Heart-Cursor");
 
 	if(_.animate) {
 		if(!this._windowCursorSprite._xAniOff) this._windowCursorSprite._xAniOff = 0;

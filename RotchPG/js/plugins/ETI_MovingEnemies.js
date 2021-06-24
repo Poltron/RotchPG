@@ -74,6 +74,7 @@
 
                 if (!Eti.AlreadyDead)
                 {
+	            Ritter.unspawnAll();
                     $gameTemp.reserveCommonEvent(2);
                     Eti.AlreadyDead = true;
                 }
